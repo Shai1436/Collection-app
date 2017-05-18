@@ -1,0 +1,14 @@
+
+{% load staticfiles %}
+<!doctype html>
+<html>
+    <head>
+        <title>
+             <!-- we want to override page titles -->
+        </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    </head>
+    <body>
+        <!-- as well as override content bits -->
+    </body>
+</html>
