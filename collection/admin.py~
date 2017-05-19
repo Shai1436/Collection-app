@@ -4,7 +4,7 @@ from django.contrib import admin
 # import your model
 from collection.models import Profile
 
-
+# and register it
 class ThingAdmin(admin.ModelAdmin):
     model = Profile
     list_display = ('name', 'description',)
