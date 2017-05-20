@@ -1,0 +1,8 @@
+from django.forms import ModelForm
+
+from collection.models import Profile
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Thing
+        fields = ('name', 'description',)

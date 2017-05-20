@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}
-    Homepage - {{ block.super }}
+    {{ thing.name }} - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
-    {% for thing in things %}
-    <h2>{{ thing.name }}</h2>
+    <h1>{{ thing.name }}</h1>
     <p>{{ thing.description }}</p>
-    {% endfor %}
+	<a href="{% url 'edit_thing' slug=thing.slug %}">Edit me!</>
 {% endblock content %}
-
