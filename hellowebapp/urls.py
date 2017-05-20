@@ -4,10 +4,12 @@ from django.contrib.auth.views import (
    password_reset_confirm,
    password_reset_complete
 )
-
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.views.generic import TemplateView
+from django.views.generic import (
+	TemplateView,
+	RedirectView
+)
 from collection import views
 from collection.backends import MyRegistrationView
 
@@ -35,6 +37,15 @@ urlpatterns = [
 
 	url(r'^accounts/create_profile/$', views.create_profile, 
 	    name='registration_create_profile'),
+	
+	# our new browse flow
+	url(r'^things/$', RedirectView.as_view(pattern_name='browse', permanent=True)),
+	url(r'^browse/$', RedirectView.as_view(pattern_name='browse', permanent=True)),
+
+	url(r'^browse/name/$',
+    	views.browse_by_name, name='browse'),
+	url(r'^browse/name/(?P<initial>[-\w]+)/$', 
+    	views.browse_by_name, name='browse_by_name'),
 
 	url(r'^accounts/password/reset/$', 
         password_reset,
