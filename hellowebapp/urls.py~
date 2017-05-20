@@ -9,6 +9,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
 from collection import views
+from collection.backends import MyRegistrationView
 
 urlpatterns = [
     url(r'^$', views.index, name='home'),
@@ -27,11 +28,18 @@ urlpatterns = [
 	url(r'^things/(?P<slug>[-\w]+)/edit/$', 
         views.edit_profile,
         name='edit_profile'),
-	
+
+	url(r'^accounts/register/$', 
+	    MyRegistrationView.as_view(),
+	    name='registration_register'),
+
+	url(r'^accounts/create_profile/$', views.create_profile, 
+	    name='registration_create_thing'),
+
 	url(r'^accounts/password/reset/$', 
         password_reset,
         {'template_name':
-        'password_reset_form.html'},
+        'registration/password_reset_form.html'},
         name="password_reset"),
 
     url(r'^accounts/password/reset/done/$',
