@@ -5,12 +5,7 @@
 
 {% block content %}
     {% for thing in things %}
-    
-    <h2>
-        <a href="{% url 'thing_detail' slug=thing.slug %}">
-            {{ thing.name }}
-        </a>
-    </h2>
+    <h2>{{ thing.name }}</h2>
     <p>{{ thing.description }}</p>
     {% endfor %}
 {% endblock content %}
